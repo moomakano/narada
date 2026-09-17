@@ -1,0 +1,16 @@
+{
+  "name": "My Study Schedule",
+  "short_name": "Study",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#FFF6FB",
+  "theme_color": "#FF8FB8",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

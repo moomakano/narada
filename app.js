@@ -1,0 +1,15 @@
+const KEY='narada-v61';const dayOrder={'จันทร์':1,'อังคาร':2,'พุธ':3,'พฤหัส':4,'ศุกร์':5,'เสาร์':6,'อาทิตย์':7};
+const defaults=[{day:'จันทร์',time:'18:30',teacher:'ครูปาล์ม'},{day:'อังคาร',time:'16:30',teacher:'ไนไน'},{day:'อังคาร',time:'17:00',teacher:'ครูใบตอง'},{day:'พุธ',time:'18:15',teacher:'ครูปอย'},{day:'พฤหัส',time:'17:00',teacher:'ครูพลอย'},{day:'พฤหัส',time:'19:15',teacher:'ป้ามิ้น'}];
+let schedule=JSON.parse(localStorage.getItem(KEY)||'null')||defaults;let edit=null;
+const list=document.getElementById('list'),modal=document.getElementById('modal');
+const day=document.getElementById('day'),time=document.getElementById('time'),teacher=document.getElementById('teacher');
+document.getElementById('todayText').textContent=new Date().toLocaleDateString('th-TH',{weekday:'long',day:'numeric',month:'long'});
+const saveData=()=>localStorage.setItem(KEY,JSON.stringify(schedule));
+const sortData=()=>schedule.sort((a,b)=>dayOrder[a.day]-dayOrder[b.day]||a.time.localeCompare(b.time));
+function nextClass(){sortData();const now=new Date();const wd=['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัส','ศุกร์','เสาร์'];const today=wd[now.getDay()];const cur=now.getHours()*60+now.getMinutes();let best=null;let score=1e9;for(const s of schedule){let m=s.time.split(':').map(Number);let mins=m[0]*60+m[1];let diff=(dayOrder[s.day]-dayOrder[today])*1440+mins-cur;if(diff<0) diff+=7*1440;if(diff<score){score=diff;best=s}}return best}
+function render(){sortData();const n=nextClass();document.getElementById('homeCard').innerHTML=n?`<h2>คาบเรียนถัดไป</h2><p><b>${n.day}</b> • ${n.time}</p><p>${n.teacher}</p>`:`<h2>ไม่มีคาบเรียน</h2>`;list.innerHTML='';schedule.forEach((s,i)=>{const c=document.createElement('div');c.className='card';c.innerHTML=`<div class=row><div><h3>${s.day}</h3><div>${s.time} • ${s.teacher}</div></div><div class=actions><button class=secondary data-e="${i}">แก้ไข</button><button class=danger data-d="${i}">ลบ</button></div></div>`;list.appendChild(c)});document.querySelectorAll('[data-e]').forEach(b=>b.onclick=()=>openEdit(+b.dataset.e));document.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{schedule.splice(+b.dataset.d,1);saveData();render()})}
+function openEdit(i){edit=i;const s=schedule[i];day.value=s.day;time.value=s.time;teacher.value=s.teacher;document.getElementById('title').textContent='แก้ไขคาบเรียน';modal.classList.remove('hidden')}
+document.getElementById('add').onclick=()=>{edit=null;day.value='จันทร์';time.value='16:00';teacher.value='';document.getElementById('title').textContent='เพิ่มคาบเรียน';modal.classList.remove('hidden')}
+document.getElementById('cancel').onclick=()=>modal.classList.add('hidden');modal.onclick=e=>{if(e.target===modal)modal.classList.add('hidden')}
+document.getElementById('save').onclick=()=>{const item={day:day.value,time:time.value||'16:00',teacher:teacher.value.trim()||'ไม่มีชื่อ'};if(edit===null)schedule.push(item);else schedule[edit]=item;saveData();modal.classList.add('hidden');render()}
+render();

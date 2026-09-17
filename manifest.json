@@ -1,0 +1,8 @@
+{
+  "name": "Narada Study V6.1",
+  "short_name": "Narada",
+  "start_url": "./?v=6.1",
+  "display": "standalone",
+  "background_color": "#FFF7FB",
+  "theme_color": "#F58BB6"
+}

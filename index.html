@@ -1,0 +1,19 @@
+<!doctype html><html lang="th"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#F58BB6"><link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css"><title>Narada Study V6.1</title></head>
+<body>
+<header><h1>🎀 Narada Study</h1><div id="todayText"></div></header>
+<main>
+<section id="homeCard" class="card"></section>
+<div id="list"></div>
+<button id="add" class="primary addbtn">+ เพิ่มคาบเรียน</button>
+</main>
+<div id="modal" class="overlay hidden"><div class="sheet">
+<h2 id="title">แก้ไขคาบเรียน</h2>
+<label>วัน</label><select id="day"><option>จันทร์</option><option>อังคาร</option><option>พุธ</option><option>พฤหัส</option><option>ศุกร์</option><option>เสาร์</option><option>อาทิตย์</option></select>
+<label>เวลา</label><input id="time" type="time">
+<label>ครู/วิชา</label><input id="teacher" type="text">
+<div class="row"><button id="cancel" class="secondary">ยกเลิก</button><button id="save" class="primary">บันทึก</button></div>
+</div></div>
+<script src="app.js"></script></body></html>

@@ -1,20 +1,10 @@
-<!doctype html><html lang="th"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#F58BB6">
-<link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css">
-<title>Narada Study V6.3.1</title></head><body>
-<header><h1>🎀 Narada Study</h1><div id="monthLabel"></div></header>
-<main>
-<section id="homeTab"></section>
-<section id="scheduleTab" class="hidden"></section>
-<section id="homeworkTab" class="hidden"></section>
-<section id="settingsTab" class="hidden"></section>
-</main>
-<nav><button data-tab="home">วันนี้</button><button data-tab="schedule">ตาราง</button><button data-tab="homework">การบ้าน</button><button data-tab="settings">ตั้งค่า</button></nav>
+<!doctype html><html lang="th"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Narada Study V6.3.2</title><link rel="stylesheet" href="style.css"></head>
+<body><header><h1>🎀 Narada Study</h1><div id="month"></div></header>
+<div class="week" id="week"></div><main id="list"></main>
 <button id="fab">＋</button>
-<div id="modal" class="overlay hidden"><div class="sheet"><div class="grab"></div><h2 id="title">คาบเรียน</h2>
-<label>วัน</label><select id="day"><option>จันทร์</option><option>อังคาร</option><option>พุธ</option><option>พฤหัส</option><option>ศุกร์</option><option>เสาร์</option><option>อาทิตย์</option></select>
-<label>เวลา</label><input id="time" type="time"><label>ครู/วิชา</label><input id="teacher">
-<div class="row"><button id="cancel" class="secondary">ยกเลิก</button><button id="save" class="primary">บันทึก</button></div></div></div>
-<input id="importFile" type="file" accept="application/json" hidden>
+<div id="modal" class="hide"><div class="sheet"><h2 id="mt">คาบเรียน</h2>
+<select id="d"></select><input id="t" type="time"><input id="n" placeholder="ครู/วิชา">
+<div class="r"><button id="c">ยกเลิก</button><button id="s">บันทึก</button></div></div></div>
 <script src="app.js"></script></body></html>

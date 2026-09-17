@@ -5,11 +5,12 @@
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="style.css">
 <title>Narada V6.3.3</title></head><body>
-<header><h1>🎀 Narada Study</h1><button id="refreshBtn" class="refresh-btn">↻</button></header>
+<header><h1>🎀 Narada Study</h1>
+<button id="refreshBtn" class="refresh-btn" aria-label="Refresh">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+<path d="M20 12a8 8 0 1 1-2.34-5.66" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+<path d="M20 4v6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+</svg></button></header>
 <div id="week" class="week"></div><main id="list"></main>
 <button id="fab">＋</button>
-<div id="modal" class="hidden"><div class="sheet">
-<h2>คาบเรียน</h2><select id="day"></select><input id="time" type="time"><input id="teacher" placeholder="ครู/วิชา">
-<div class="row"><button id="cancel">ยกเลิก</button><button id="save">บันทึก</button></div>
-</div></div>
 <script src="app.js"></script></body></html>

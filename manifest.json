@@ -1,17 +1,9 @@
 {
-  "name": "Narada Study V9 Ultra Build 1",
-  "short_name": "Narada V9",
+  "name":"Narada Study V9 Ultra Build 1",
+  "short_name":"Narada V9",
   "start_url": "./?v=6.3.3",
   "display": "standalone",
-  "theme_color": "#111827",
-  "background_color": "#111827",
-  "icons": [
-    {
-      "src": "icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    }
-  ],
-  "orientation": "portrait"
+  "theme_color":"#EC4A94",
+  "background_color":"#FFF9FC",
+  "icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
 }

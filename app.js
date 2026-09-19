@@ -48,23 +48,3 @@ settingsBtn.onclick=()=>{settingsBtn.classList.add('gear');setTimeout(()=>settin
 exportBtn.onclick=()=>{const b=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='narada-backup.json';a.click();};
 importBtn.onclick=()=>importFile.click();importFile.onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{data=JSON.parse(r.result);saveDB();drawList();alert('Import สำเร็จ')}catch{alert('ไฟล์ไม่ถูกต้อง')}};r.readAsText(f)};
 resetDayBtn.onclick=()=>{if(confirm('รีเซ็ตเฉพาะ '+active+' ?')){data=data.filter(x=>x.day!==active);saveDB();drawList();settingsModal.classList.add('hidden')}};
-const notifyBtn=document.createElement('button');
-notifyBtn.textContent='🔔 เปิดการแจ้งเตือน';
-notifyBtn.onclick=enableNaradaNotifications;
-document.querySelector('#settingsModal .sheet').insertBefore(notifyBtn,document.getElementById('resetDayBtn'));
-if('serviceWorker' in navigator){
- navigator.serviceWorker.ready.then(()=>setInterval(()=>{
-  if(localStorage.getItem('naradaNotify')!=='on') return;
-  const now=new Date(), hh=String(now.getHours()).padStart(2,'0'), mm=String(now.getMinutes()).padStart(2,'0');
-  const t=hh+':'+mm;
-  const today=['อาทิตย์','จันทร์','อังคาร','พุธ','พฤหัส','ศุกร์','เสาร์'][now.getDay()];
-  (JSON.parse(localStorage.getItem('narada632')||'[]')).forEach(x=>{
-    let [H,M]=x.time.split(':').map(Number);
-    let mins=H*60+M-10;
-    let th=Math.floor((mins+1440)%1440/60), tm=(mins+1440)%60;
-    if(today===x.day && t===`${String(th).padStart(2,'0')}:${String(tm).padStart(2,'0')}`){
-      navigator.serviceWorker.getRegistration().then(r=>r&&r.showNotification('อีก 10 นาที: '+x.teacher,{body:x.day+' '+x.time}));
-    }
-  });
- },60000));
-}

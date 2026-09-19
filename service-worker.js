@@ -1,0 +1,1 @@
+const CACHE='narada-v633';self.addEventListener('fetch',()=>{});

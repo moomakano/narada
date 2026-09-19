@@ -19,3 +19,32 @@ cancel.onclick=()=>modal.classList.add('hidden');
 save.onclick=()=>{const it={day:day.value,time:time.value||'16:00',teacher:teacher.value||'ไม่มีชื่อ'};if(edit<0)data.push(it);else data[edit]=it;saveDB();modal.classList.add('hidden');drawWeek();drawList()};
 refreshBtn.onclick=async()=>{refreshBtn.classList.add('spin');if('serviceWorker' in navigator){const r=await navigator.serviceWorker.getRegistration();if(r)await r.update()}setTimeout(()=>location.reload(),200)};
 drawWeek();drawList();
+
+
+settingsBtn.onclick=()=>settingsModal.classList.remove('hidden');
+closeSettings.onclick=()=>settingsModal.classList.add('hidden');
+resetBtn.onclick=()=>{
+ if(confirm('ลบข้อมูลตารางเรียนทั้งหมดและคืนค่าเริ่มต้น?')){
+   localStorage.removeItem('narada632');
+   data=[
+    {day:'จันทร์',time:'18:30',teacher:'ครูปาล์ม'},
+    {day:'อังคาร',time:'16:30',teacher:'ไนไน'},
+    {day:'อังคาร',time:'17:00',teacher:'ครูใบตอง'},
+    {day:'พุธ',time:'18:15',teacher:'ครูปอย'},
+    {day:'พฤหัส',time:'17:00',teacher:'ครูพลอย'},
+    {day:'พฤหัส',time:'19:15',teacher:'ป้ามิ้น'}
+   ];
+   saveDB();
+   settingsModal.classList.add('hidden');
+   drawWeek();
+   drawList();
+ }
+};
+
+const themes={pink:['#F58BB6','#F5428D'],blue:['#7EC8FF','#3498DB'],purple:['#B388FF','#7E57C2']};
+function applyTheme(t){const c=themes[t]||themes.pink;document.documentElement.style.setProperty('--h',c[0]);document.documentElement.style.setProperty('--a',c[1]);localStorage.setItem('naradaTheme',t);themeSelect.value=t;}
+applyTheme(localStorage.getItem('naradaTheme')||'pink');themeSelect.onchange=e=>applyTheme(e.target.value);
+settingsBtn.onclick=()=>{settingsBtn.classList.add('gear');setTimeout(()=>settingsBtn.classList.remove('gear'),600);settingsModal.classList.remove('hidden')};
+exportBtn.onclick=()=>{const b=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='narada-backup.json';a.click();};
+importBtn.onclick=()=>importFile.click();importFile.onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{data=JSON.parse(r.result);saveDB();drawList();alert('Import สำเร็จ')}catch{alert('ไฟล์ไม่ถูกต้อง')}};r.readAsText(f)};
+resetDayBtn.onclick=()=>{if(confirm('รีเซ็ตเฉพาะ '+active+' ?')){data=data.filter(x=>x.day!==active);saveDB();drawList();settingsModal.classList.add('hidden')}};

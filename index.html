@@ -1,26 +1,11 @@
-
 <!doctype html><html lang="th"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#F58BB6">
-<link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="style.css">
-<title>Narada V6.4</title></head><body>
-<header><h1>🎀 Narada Study</h1><div class="top-actions"><button id="settingsBtn" class="refresh-btn">⚙️</button><button id="refreshBtn" class="refresh-btn">↻</button></div></header>
-<div id="week" class="week"></div><main id="list"></main>
-<button id="fab">＋</button>
-<div id="modal" class="hidden"><div class="sheet">
-<h2>คาบเรียน</h2><select id="day"></select><input id="time" type="time"><input id="teacher" placeholder="ครู/วิชา">
-<div class="row"><button id="cancel">ยกเลิก</button><button id="save">บันทึก</button></div>
-</div></div>
-<div id="settingsModal" class="hidden"><div class="sheet"><h2>⚙️ ตั้งค่า</h2><label>ธีมสี</label><select id="themeSelect"><option value="pink">ชมพู</option><option value="blue">ฟ้า</option><option value="purple">ม่วง</option></select><button id="exportBtn">📤 Export ตารางเรียน</button><input id="importFile" type="file" accept="application/json" style="display:none"><button id="importBtn">📥 Import ตารางเรียน</button><button id="resetDayBtn">รีเซ็ตเฉพาะวันนี้</button><button id="resetBtn" class="danger">รีเซ็ตข้อมูลทั้งหมด</button><div class="row"><button id="closeSettings">ปิด</button></div></div></div>
-<script>
-async function enableNaradaNotifications(){
- if(!('Notification' in window)) return;
- if(Notification.permission==='default') await Notification.requestPermission();
- if(Notification.permission==='granted'){
-  localStorage.setItem('naradaNotify','on');
-  new Notification('Narada พร้อมแล้ว 🎀',{body:'เปิดการแจ้งเตือนสำเร็จ'});
- }
-}
-</script>
+<title>Narada V7.1</title>
+<link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css">
+</head><body>
+<header class="hero"><div><div class="bow">🎀</div><h1>Narada V7.1</h1><p>Apple Calendar Style</p></div>
+<div class="actions"><button id=s>⚙️</button><button id=r>↻</button></div></header>
+<section class="cal"><div class=month>September 2026</div><div class=grid id=grid></div></section>
+<div class=card><h3>คาบเรียนวันนี้</h3><p>แตะวันที่เพื่อดูคาบเรียน</p></div>
+<button class=fab>+</button>
 <script src="app.js"></script></body></html>

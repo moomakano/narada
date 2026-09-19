@@ -1,9 +1,1 @@
-{
-  "name": "Narada Study V6.3.3",
-  "short_name": "Narada",
-  "start_url": "./?v=6.3.3",
-  "display": "standalone",
-  "theme_color": "#F58BB6",
-  "background_color": "#FFF7FB",
-  "icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
-}
+{"name":"Narada V7.1","short_name":"Narada","start_url":".","display":"standalone","background_color":"#f8f1f5","theme_color":"#ef7bb1","icons":[{"src":"assets/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}

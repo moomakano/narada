@@ -1,1 +1,18 @@
-:root{--a:#ef7bb1;--b:#8c7cff}body{margin:0;font-family:-apple-system;background:#f7f1f5}.hero{display:flex;justify-content:space-between;align-items:center;padding:22px;background:linear-gradient(135deg,var(--a),var(--b));color:#fff}.glass{margin:16px;padding:18px;background:rgba(255,255,255,.6);backdrop-filter:blur(14px);border-radius:24px}.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}.d{background:#fff;padding:10px;border-radius:14px;text-align:center}.today{background:#e54c91;color:#fff}button{border:0;border-radius:50%;width:46px;height:46px;background:rgba(255,255,255,.25);color:#fff;font-size:22px}.spin{animation:s .8s linear infinite}@keyframes s{to{transform:rotate(360deg)}}
+
+:root{--a:#ef7bb1;--b:#8c7cff}
+*{box-sizing:border-box}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:#f8f1f5}
+.hero{display:flex;justify-content:space-between;align-items:center;padding:22px;background:linear-gradient(135deg,var(--a),var(--b));color:#fff}
+.logo{font-size:42px}.hero h1{margin:6px 0 0;font-size:36px}
+.actions button{width:46px;height:46px;border:0;border-radius:50%;background:rgba(255,255,255,.25);color:#fff;font-size:20px;margin-left:8px;backdrop-filter:blur(10px)}
+.glass{margin:16px;padding:18px;background:rgba(255,255,255,.6);backdrop-filter:blur(14px);border-radius:24px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.monthbar{display:flex;justify-content:space-between;align-items:center}.monthbar button{border:0;background:none;font-size:30px;color:#555}
+.weekdays{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;color:#777;font-size:13px;margin:12px 0}
+.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.day{background:#fff;border-radius:16px;padding:10px;text-align:center;min-height:58px;display:flex;flex-direction:column;justify-content:center;cursor:pointer}
+.day.today{background:#e54c91;color:#fff}.day.other{opacity:.35}.dot{width:7px;height:7px;border-radius:50%;margin:5px auto 0;background:#4f7cff}
+.nextCard{font-size:18px;font-weight:600}
+.sheet{position:fixed;inset:0;background:rgba(0,0,0,.25);display:none}.sheet.show{display:block}
+.panel{position:absolute;left:0;right:0;bottom:0;background:#fff;border-radius:24px 24px 0 0;padding:20px}
+.panel button{width:100%;padding:14px;border:0;border-radius:14px;background:#f3f3f3;margin-top:10px}
+.spin{animation:s .8s linear infinite}@keyframes s{to{transform:rotate(360deg)}}

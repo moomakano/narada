@@ -1,1 +1,50 @@
-<!doctype html><html lang='th'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>Narada V7.2 Ultimate</title><link rel='manifest' href='manifest.json'><link rel='stylesheet' href='style.css'></head><body><header class='hero'><div><div class='logo'>🎀</div><h1>Narada V7.2 Ultimate</h1><p>Apple Calendar Edition</p></div><div><button id='theme'>🎨</button><button id='refresh'>↻</button></div></header><main><section class='glass'><h2>September 2026</h2><div id='cal' class='cal'></div></section><section class='glass'><h3>📚 คาบเรียนถัดไป</h3><p id='next'>ไม่มีคาบเรียนวันนี้</p></section></main><script src='app.js'></script></body></html>
+
+<!doctype html><html lang="th"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Narada V7.2.1</title>
+<link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css">
+</head><body>
+<header class="hero">
+  <div><div class="logo">🎀</div><h1>Narada V7.2.1</h1><p>Apple Calendar Edition</p></div>
+  <div class="actions">
+    <button id="themeBtn">🎨</button>
+    <button id="settingsBtn">⚙️</button>
+    <button id="refreshBtn">↻</button>
+  </div>
+</header>
+
+<main>
+<section class="glass">
+  <div class="monthbar">
+    <button id="prevBtn">‹</button>
+    <h2 id="monthTitle"></h2>
+    <button id="nextBtn">›</button>
+  </div>
+  <div class="weekdays"><span>อา</span><span>จ</span><span>อ</span><span>พ</span><span>พฤ</span><span>ศ</span><span>ส</span></div>
+  <div id="calendar" class="calendar"></div>
+</section>
+
+<section class="glass">
+  <h3>📚 คาบเรียนถัดไป</h3>
+  <div id="nextClass" class="nextCard">ครูปาล์ม • 18:30</div>
+</section>
+</main>
+
+<div id="daySheet" class="sheet"><div class="panel">
+  <h3 id="sheetDate"></h3>
+  <div id="sheetContent"></div>
+  <button id="closeSheet">ปิด</button>
+</div></div>
+
+<div id="settingsSheet" class="sheet"><div class="panel">
+  <h3>ตั้งค่า</h3>
+  <button id="soundTest">🔔 ทดสอบเสียง</button>
+  <button id="vibrateTest">📳 ทดสอบการสั่น</button>
+  <button id="pinkTheme">💗 ชมพู</button>
+  <button id="blueTheme">💙 ฟ้า</button>
+  <button id="purpleTheme">💜 ม่วง</button>
+  <button id="closeSettings">ปิด</button>
+</div></div>
+
+<script src="app.js"></script>
+</body></html>

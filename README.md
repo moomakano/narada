@@ -1,2 +1,2 @@
-# Narada V7.2 Ultimate
-อัปโหลดทั้งหมดไปที่ GitHub Pages แล้วกด Replace.
+# Narada V7.2.1
+อัปโหลดไฟล์ทั้งหมดไปที่ GitHub แล้ว Replace ของเดิม

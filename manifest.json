@@ -1,9 +1,9 @@
 {
-  "name":"Narada Study V6.4.2 Fixed",
-  "short_name":"Narada",
-  "start_url":"./?v=6.4.2",
-  "display":"standalone",
-  "theme_color":"#F58BB6",
-  "background_color":"#FFF7FB",
+  "name":"Narada V6.5 Rose Glass",
+  "short_name": "Narada",
+  "start_url": "./?v=6.3.3",
+  "display": "standalone",
+  "theme_color":"#FF7EB3",
+  "background_color": "#FFF7FB",
   "icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
 }

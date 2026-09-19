@@ -1,3 +1,66 @@
+
+:root{
+ --bg:#fff7fb;--card:rgba(255,255,255,.72);--text:#2d2d38;--muted:#7b6f7f;
+ --pink:#ff7eb3;--purple:#8b5cf6;--blue:#60a5fa;--shadow:0 12px 35px rgba(139,92,246,.16);
+}
+*{box-sizing:border-box}
+body{
+ margin:0;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Noto Sans Thai',sans-serif;
+ color:var(--text);
+ background:linear-gradient(145deg,#fff7fb,#f3f6ff);
+ min-height:100vh;
+}
+body:before{
+ content:'';position:fixed;inset:0;pointer-events:none;
+ background:radial-gradient(circle at 20% 20%,rgba(255,126,179,.18),transparent 30%),
+ radial-gradient(circle at 85% 15%,rgba(96,165,250,.18),transparent 30%),
+ radial-gradient(circle at 50% 100%,rgba(139,92,246,.14),transparent 35%);
+}
+.header,.topbar{
+ backdrop-filter:blur(18px);background:rgba(255,255,255,.6);
+ border-bottom:1px solid rgba(255,255,255,.35);
+}
+.card,.modal-content,.panel,.lesson-card,.item{
+ background:var(--card);backdrop-filter:blur(18px);
+ border:1px solid rgba(255,255,255,.45);
+ border-radius:22px;box-shadow:var(--shadow);
+}
+button,.btn{
+ border:none;border-radius:18px;padding:12px 18px;font-weight:700;
+ background:linear-gradient(135deg,var(--pink),var(--purple));
+ color:#fff;box-shadow:0 8px 18px rgba(255,126,179,.28);
+ transition:.18s ease;
+}
+button:active,.btn:active{transform:scale(.96)}
+button.secondary,.btn.secondary{
+ background:rgba(255,255,255,.6);color:var(--text);
+ border:1px solid rgba(139,92,246,.18);box-shadow:none;
+}
+input,select,textarea{
+ background:rgba(255,255,255,.72);border:1px solid rgba(255,255,255,.5);
+ border-radius:16px;padding:12px;
+}
+.week-day,.day{
+ border-radius:20px;transition:.18s ease;
+}
+.week-day.active,.day.active{
+ background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff;
+ transform:translateY(-2px);box-shadow:0 8px 18px rgba(255,126,179,.25);
+}
+.progress,.progress-bar{
+ border-radius:999px;overflow:hidden;background:rgba(139,92,246,.12);
+}
+.progress-fill{
+ background:linear-gradient(90deg,var(--pink),var(--purple),var(--blue));
+}
+.icon-circle{
+ width:46px;height:46px;border-radius:50%;
+ background:linear-gradient(135deg,var(--pink),var(--purple));
+ display:flex;align-items:center;justify-content:center;color:#fff;
+}
+
+
+/* Original styles kept below */
 :root{--h:#F58BB6;--a:#F5428D}
 
 body{margin:0;font-family:-apple-system;background:#FFF7FB}

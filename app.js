@@ -17,7 +17,15 @@ function drawList(){list.innerHTML='';data.sort((a,b)=>ORDER[a.day]-ORDER[b.day]
 fab.onclick=()=>{edit=-1;day.value='จันทร์';time.value='16:00';teacher.value='';modal.classList.remove('hidden')};
 cancel.onclick=()=>modal.classList.add('hidden');
 save.onclick=()=>{const it={day:day.value,time:time.value||'16:00',teacher:teacher.value||'ไม่มีชื่อ'};if(edit<0)data.push(it);else data[edit]=it;saveDB();modal.classList.add('hidden');drawWeek();drawList()};
-refreshBtn.onclick=async()=>{refreshBtn.classList.add('spin');if('serviceWorker' in navigator){const r=await navigator.serviceWorker.getRegistration();if(r)await r.update()}setTimeout(()=>location.reload(),200)};
+refreshBtn.onclick=async()=>{
+  refreshBtn.classList.add('spin');
+  navigator.vibrate&&navigator.vibrate(15);
+  if('serviceWorker' in navigator){
+    const r=await navigator.serviceWorker.getRegistration();
+    if(r) await r.update();
+  }
+  setTimeout(()=>location.reload(true),800);
+};
 drawWeek();drawList();
 
 
@@ -48,3 +56,34 @@ settingsBtn.onclick=()=>{settingsBtn.classList.add('gear');setTimeout(()=>settin
 exportBtn.onclick=()=>{const b=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='narada-backup.json';a.click();};
 importBtn.onclick=()=>importFile.click();importFile.onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{data=JSON.parse(r.result);saveDB();drawList();alert('Import สำเร็จ')}catch{alert('ไฟล์ไม่ถูกต้อง')}};r.readAsText(f)};
 resetDayBtn.onclick=()=>{if(confirm('รีเซ็ตเฉพาะ '+active+' ?')){data=data.filter(x=>x.day!==active);saveDB();drawList();settingsModal.classList.add('hidden')}};
+
+async function enableNotifications(){
+ if(!('Notification' in window)) return alert('อุปกรณ์นี้ไม่รองรับ');
+ const p=await Notification.requestPermission();
+ if(p==='granted'){
+   localStorage.setItem('naradaNotify','on');
+   new Notification('Narada พร้อมแล้ว 🎀',{body:'เปิดการแจ้งเตือนสำเร็จ'});
+ }else alert('กรุณาอนุญาตการแจ้งเตือน');
+}
+if(typeof soundTest!=='undefined'){
+  const btn=document.createElement('button');
+  btn.textContent='🔔 เปิดการแจ้งเตือน';
+  btn.onclick=enableNotifications;
+  soundTest.parentNode.insertBefore(btn,soundTest);
+}
+setInterval(()=>{
+ if(localStorage.getItem('naradaNotify')!=='on'||Notification.permission!=='granted') return;
+ const n=new Date();
+ const t=String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0');
+ const d=DAYS[n.getDay()];
+ data.forEach(x=>{
+  let [h,m]=x.time.split(':').map(Number);
+  let mins=h*60+m-10;
+  let hh=Math.floor((mins+1440)%1440/60), mm=(mins+1440)%60;
+  let tt=String(hh).padStart(2,'0')+':'+String(mm).padStart(2,'0');
+  if(x.day===d && tt===t){
+    navigator.vibrate&&navigator.vibrate([30,40,30]);
+    new Notification('อีก 10 นาที: '+x.teacher,{body:x.day+' '+x.time});
+  }
+ });
+},60000);

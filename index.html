@@ -1,13 +1,26 @@
 
-<!doctype html><html lang='th'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
-<title>Narada V7.2.2 Ultimate</title><link rel='manifest' href='manifest.json'><link rel='stylesheet' href='style.css'></head>
-<body><header class='hero'><div><div class='logo'>🎀</div><h1>Narada</h1><small>V7.2.2 Ultimate</small></div>
-<div class='actions'><button id='settingsBtn'>⚙️</button><button id='refreshBtn'>↻</button></div></header>
-<main><section class='glass'><div class='month'>September 2026</div><div id='cal' class='cal'></div></section>
-<section class='glass'><h3>📚 คาบเรียนถัดไป</h3><div id='next'>ครูปาล์ม • 18:30</div></section></main>
-<div id='settings' class='sheet'><div class='panel'><h3>ตั้งค่า</h3>
-<label><input id='notifyToggle' type='checkbox'> เปิดการแจ้งเตือน</label>
-<label>เตือนล่วงหน้า <select id='lead'><option>5</option><option selected>10</option><option>15</option></select> นาที</label>
-<label><input id='vibrate' type='checkbox' checked> เปิดการสั่น</label>
-<button id='test'>🔔 ทดสอบเสียง</button><button id='close'>ปิด</button></div></div>
-<script src='app.js'></script></body></html>
+<!doctype html><html lang="th"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#F58BB6">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+<title>Narada V6.4</title></head><body>
+<header><h1>🎀 Narada Study</h1><div class="top-actions"><button id="settingsBtn" class="refresh-btn">⚙️</button><button id="refreshBtn" class="refresh-btn">↻</button></div></header>
+<div id="week" class="week"></div><main id="list"></main>
+<button id="fab">＋</button>
+<div id="modal" class="hidden"><div class="sheet">
+<h2>คาบเรียน</h2><select id="day"></select><input id="time" type="time"><input id="teacher" placeholder="ครู/วิชา">
+<div class="row"><button id="cancel">ยกเลิก</button><button id="save">บันทึก</button></div>
+</div></div>
+<div id="settingsModal" class="hidden"><div class="sheet"><h2>⚙️ ตั้งค่า</h2><label>ธีมสี</label><select id="themeSelect"><option value="pink">ชมพู</option><option value="blue">ฟ้า</option><option value="purple">ม่วง</option></select><button id="exportBtn">📤 Export ตารางเรียน</button><input id="importFile" type="file" accept="application/json" style="display:none"><button id="importBtn">📥 Import ตารางเรียน</button><button id="resetDayBtn">รีเซ็ตเฉพาะวันนี้</button><button id="resetBtn" class="danger">รีเซ็ตข้อมูลทั้งหมด</button><div class="row"><button id="closeSettings">ปิด</button></div></div></div>
+<script>
+async function enableNaradaNotifications(){
+ if(!('Notification' in window)) return;
+ if(Notification.permission==='default') await Notification.requestPermission();
+ if(Notification.permission==='granted'){
+  localStorage.setItem('naradaNotify','on');
+  new Notification('Narada พร้อมแล้ว 🎀',{body:'เปิดการแจ้งเตือนสำเร็จ'});
+ }
+}
+</script>
+<script src="app.js"></script></body></html>

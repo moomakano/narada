@@ -1,1 +1,1 @@
-{"name":"Narada V7.2","short_name":"Narada","start_url":".","display":"standalone","background_color":"#f8f1f5","theme_color":"#ef7bb1","icons":[{"src":"assets/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}
+{"name":"Narada V7.2 Ultimate","short_name":"Narada","display":"standalone","start_url":".","theme_color":"#ef7bb1","background_color":"#f7f1f5","icons":[{"src":"assets/icons/icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]}

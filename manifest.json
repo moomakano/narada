@@ -1,9 +1,9 @@
 {
-  "name":"Narada Study V8 Liquid Glass",
+  "name":"Narada Study V8 Ultra",
   "short_name":"Narada V8",
   "start_url": "./?v=6.3.3",
   "display": "standalone",
-  "theme_color":"#E5488A",
-  "background_color":"#FFF7FB",
+  "theme_color":"#EB4C93",
+  "background_color":"#FFF8FC",
   "icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
 }

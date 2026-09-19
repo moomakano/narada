@@ -1,2 +1,2 @@
-# Narada V7.2.1
-อัปโหลดไฟล์ทั้งหมดไปที่ GitHub แล้ว Replace ของเดิม
+# V6.3.3 Refresh Only
+เพิ่มปุ่ม Refresh เท่านั้น

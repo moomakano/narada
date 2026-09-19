@@ -46,8 +46,8 @@ function applyTheme(t){const c=themes[t]||themes.pink;document.documentElement.s
 applyTheme(localStorage.getItem('naradaTheme')||'pink');themeSelect.onchange=e=>applyTheme(e.target.value);
 settingsBtn.onclick=()=>{settingsBtn.classList.add('gear');setTimeout(()=>settingsBtn.classList.remove('gear'),600);settingsModal.classList.remove('hidden')};
 exportBtn.onclick=()=>{const b=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='narada-backup.json';a.click();};
-importBtn.onclick=()=>importFile.click();importFile.onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{data=JSON.parse(r.result);saveDB();drawList();alert('Import สำเร็จ')}catch{alert('ไฟล์ไม่ถูกต้อง')}};r.readAsText(f)};
-resetDayBtn.onclick=()=>{if(confirm('รีเซ็ตเฉพาะ '+active+' ?')){data=data.filter(x=>x.day!==active);saveDB();drawList();settingsModal.classList.add('hidden')}};
+importBtn.onclick=()=>importFile.click();importFile.onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{data=JSON.parse(r.result);saveDB();drawWeek();drawList();settingsModal.classList.add('hidden');alert('Import สำเร็จ')}catch{alert('ไฟล์ไม่ถูกต้อง')}};r.readAsText(f)};
+resetDayBtn.onclick=()=>{if(confirm('รีเซ็ตเฉพาะ '+active+' ?')){data=data.filter(x=>x.day!==active);saveDB();drawWeek();drawList();settingsModal.classList.add('hidden')}};
 const notifyBtn=document.createElement('button');
 notifyBtn.textContent='🔔 เปิดการแจ้งเตือน';
 notifyBtn.onclick=enableNaradaNotifications;
@@ -68,3 +68,5 @@ if('serviceWorker' in navigator){
   });
  },60000));
 }
+
+if('serviceWorker' in navigator){navigator.serviceWorker.register('service-worker.js').catch(console.error);}

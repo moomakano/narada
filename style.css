@@ -23,65 +23,62 @@ input,select{width:100%;padding:12px;margin:8px 0;border:1px solid #ddd;border-r
 
 .gear{animation:g .6s ease}@keyframes g{0%{transform:rotate(0)}50%{transform:rotate(180deg) scale(1.1)}100%{transform:rotate(360deg)}}
 
-/* ===== Narada V7 Theme Override ===== */
+/* ===== Narada V8 Liquid Glass ===== */
 :root{
-  --pink:#E5488A;
-  --bg:#FFF7FB;
-  --card:#FFFFFF;
+ --accent:#E5488A;
+ --accent2:#FF8FBC;
+ --bg1:#FFF7FB;
+ --bg2:#F3F6FF;
+ --glass:rgba(255,255,255,.68);
 }
-
+*{box-sizing:border-box}
 body{
-  background:linear-gradient(180deg,#FFF7FB 0%,#F8F5FF 100%) !important;
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Noto Sans Thai",sans-serif !important;
+ background:linear-gradient(180deg,var(--bg1),var(--bg2))!important;
+ font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Noto Sans Thai",sans-serif!important;
+ color:#222;
 }
-
-header,.header,.top,.topbar{
-  background:linear-gradient(135deg,#F28CB6,#E5488A) !important;
-  border-radius:0 0 28px 28px !important;
-  box-shadow:0 12px 30px rgba(229,72,138,.25)!important;
+body::before{
+ content:"";position:fixed;inset:0;pointer-events:none;
+ background:
+ radial-gradient(circle at 15% 15%,rgba(255,143,188,.18),transparent 28%),
+ radial-gradient(circle at 90% 10%,rgba(120,119,255,.16),transparent 30%),
+ radial-gradient(circle at 50% 100%,rgba(229,72,138,.12),transparent 36%);
 }
-
-.week,.days,.day-list{gap:12px!important;padding:0 16px!important;}
+header,.header,.topbar{
+ background:linear-gradient(135deg,#F8A5C8,#E5488A)!important;
+ border-radius:0 0 34px 34px!important;
+ box-shadow:0 16px 40px rgba(229,72,138,.28)!important;
+ backdrop-filter:blur(18px);
+}
+.card,.lesson-card,.item,.panel,.modal-content{
+ background:var(--glass)!important;
+ backdrop-filter:blur(20px)!important;
+ border:1px solid rgba(255,255,255,.5)!important;
+ border-radius:26px!important;
+ box-shadow:0 10px 30px rgba(0,0,0,.08)!important;
+}
 .day,.week-day{
-  background:#F7E6EF!important;
-  border-radius:22px!important;
-  transition:.2s!important;
+ background:#F9E8F1!important;
+ border-radius:22px!important;
+ transition:.18s ease;
 }
 .day.active,.week-day.active,.selected{
-  background:#E5488A!important;
-  color:#fff!important;
-  transform:translateY(-2px)!important;
+ background:linear-gradient(135deg,#FF5FA2,#D83D85)!important;
+ color:#fff!important;
+ transform:translateY(-3px)!important;
+ box-shadow:0 10px 22px rgba(229,72,138,.3)!important;
 }
-
-.card,.lesson-card,.item,.schedule-card,.panel{
-  background:#fff!important;
-  border-radius:24px!important;
-  box-shadow:0 8px 24px rgba(0,0,0,.08)!important;
-  border:none!important;
-}
-
 button,.btn,.fab{
-  background:#E5488A!important;
-  color:#fff!important;
-  border-radius:999px!important;
-  box-shadow:0 8px 20px rgba(229,72,138,.35)!important;
+ background:linear-gradient(135deg,#FF5FA2,#D83D85)!important;
+ color:#fff!important;
+ border:none!important;
+ border-radius:999px!important;
+ box-shadow:0 10px 22px rgba(229,72,138,.35)!important;
 }
-button:active,.btn:active,.fab:active{
-  transform:scale(.96)!important;
-}
-
-.fab{
-  width:74px!important;
-  height:74px!important;
-}
-
-.settings-btn,.refresh-btn{
-  background:#fff!important;
-  color:#E5488A!important;
-}
-
+.fab{width:78px!important;height:78px!important;}
+.settings-btn,.refresh-btn{background:#fff!important;color:#E5488A!important;}
 input,select,textarea{
-  border-radius:16px!important;
-  border:1px solid #F3D7E4!important;
-  background:#fff!important;
+ background:rgba(255,255,255,.9)!important;
+ border:1px solid #F3D7E4!important;
+ border-radius:16px!important;
 }

@@ -1,9 +1,9 @@
 {
-  "name":"Narada Study V8 Ultra",
-  "short_name":"Narada V8",
+  "name":"Narada Study V9 Ultra Build 1",
+  "short_name":"Narada V9",
   "start_url": "./?v=6.3.3",
   "display": "standalone",
-  "theme_color":"#EB4C93",
-  "background_color":"#FFF8FC",
+  "theme_color":"#EC4A94",
+  "background_color":"#FFF9FC",
   "icons":[{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
 }
